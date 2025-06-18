@@ -32,12 +32,12 @@ const NodeEditor = ({
   useEffect(() => {
     if (selectedNode) {
       setNodeLabel(selectedNode.data.label || "");
-      setSelectedIntent(selectedNode.data.intentId || "");
-      setSelectedResponse(selectedNode.data.responseId || "");
+      setSelectedIntent(selectedNode.data.intentId || "none");
+      setSelectedResponse(selectedNode.data.responseId || "none");
     } else {
       setNodeLabel("");
-      setSelectedIntent("");
-      setSelectedResponse("");
+      setSelectedIntent("none");
+      setSelectedResponse("none");
     }
   }, [selectedNode]);
 
@@ -54,8 +54,8 @@ const NodeEditor = ({
           data: {
             ...node.data,
             label: nodeLabel,
-            intentId: selectedIntent || null,
-            responseId: selectedResponse || null
+            intentId: selectedIntent === "none" ? null : selectedIntent,
+            responseId: selectedResponse === "none" ? null : selectedResponse
           }
         };
       }
@@ -106,7 +106,7 @@ const NodeEditor = ({
             <SelectValue placeholder="Selecione uma intenção" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">Nenhuma</SelectItem>
+            <SelectItem value="none">Nenhuma</SelectItem>
             {intents.map(intent => (
               <SelectItem key={intent.id} value={intent.id}>
                 {intent.name}
@@ -126,7 +126,7 @@ const NodeEditor = ({
             <SelectValue placeholder="Selecione uma resposta" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">Nenhuma</SelectItem>
+            <SelectItem value="none">Nenhuma</SelectItem>
             {responses.map(response => (
               <SelectItem key={response.id} value={response.id}>
                 {response.name}
