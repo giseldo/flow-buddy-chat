@@ -2,6 +2,14 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import FlowEditor from "@/components/FlowEditor";
 import ChatbotTester from "@/components/ChatbotTester";
 import { toast } from "@/components/ui/sonner";
@@ -92,11 +100,32 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background p-4">
-      <header className="mb-6">
-        <h1 className="text-3xl font-bold">Construtor de Chatbots</h1>
-        <p className="text-muted-foreground">
-          Crie e treine seu chatbot com processamento de linguagem natural
-        </p>
+      <header className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Construtor de Chatbots</h1>
+          <p className="text-muted-foreground">
+            Crie e treine seu chatbot com processamento de linguagem natural
+          </p>
+        </div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline">Ajuda</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Como usar a ferramenta</DialogTitle>
+              <DialogDescription>
+                Dicas rápidas para criar e testar seus fluxos
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-2 text-sm">
+              <p>Use “Criar Novo Fluxo” para iniciar um novo projeto.</p>
+              <p>Monte o fluxo conectando intenções e respostas no editor.</p>
+              <p>Você pode salvar, importar e exportar os fluxos em JSON.</p>
+              <p>Na aba “Testar Chatbot”, envie mensagens e veja as respostas.</p>
+            </div>
+          </DialogContent>
+        </Dialog>
       </header>
 
       <div className="flex flex-wrap gap-4 mb-6">
