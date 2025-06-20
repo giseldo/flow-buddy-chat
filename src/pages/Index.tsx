@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -107,25 +108,30 @@ const Index = () => {
             Crie e treine seu chatbot com processamento de linguagem natural
           </p>
         </div>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline">Ajuda</Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Como usar a ferramenta</DialogTitle>
-              <DialogDescription>
-                Dicas rápidas para criar e testar seus fluxos
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-2 text-sm">
-              <p>Use “Criar Novo Fluxo” para iniciar um novo projeto.</p>
-              <p>Monte o fluxo conectando intenções e respostas no editor.</p>
-              <p>Você pode salvar, importar e exportar os fluxos em JSON.</p>
-              <p>Na aba “Testar Chatbot”, envie mensagens e veja as respostas.</p>
-            </div>
-          </DialogContent>
-        </Dialog>
+        <div className="flex gap-2">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">Ajuda</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Como usar a ferramenta</DialogTitle>
+                <DialogDescription>
+                  Dicas rápidas para criar e testar seus fluxos
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-2 text-sm">
+                <p>Use “Criar Novo Fluxo” para iniciar um novo projeto.</p>
+                <p>Monte o fluxo conectando intenções e respostas no editor.</p>
+                <p>Você pode salvar, importar e exportar os fluxos em JSON.</p>
+                <p>Na aba “Testar Chatbot”, envie mensagens e veja as respostas.</p>
+              </div>
+            </DialogContent>
+          </Dialog>
+          <Button asChild variant="outline">
+            <Link to="/about">Sobre</Link>
+          </Button>
+        </div>
       </header>
 
       <div className="flex flex-wrap gap-4 mb-6">
